@@ -42,5 +42,5 @@ next-env.d.ts
 
 
 .vercel
-service_key.json
 .env.local
+service_key.json
