@@ -5,6 +5,14 @@
         <p><strong>Hello I am Gazi Ehsanul Haque, a software developer. The Notion clone 2.0 is a simplified version of <a href="https://www.notion.com/">www.notion.com</a>. The idea was taken from <a href="https://www.youtube.com/watch?v=cso7-4oAPNQ&t=1634s">Sonny Sangha's YouTube</a>. With a little bit of addition, I have repolished it.</strong></p>
     </div>
 </div>
+<div>
+    <h2>Please contact me if you encounter any problems<h2>
+    <ul>
+    <li class="display:flex; align-items: center;"><a href="https://www.linkedin.com/in/gaziehsanul/">linkedin.com/in/gaziehsanul/</a> </li>
+    <li class="display:flex; align-items: center;">antik.edu@gmail.com</li>
+    <li class="display:flex; align-items: center;">+88-01869694519</li>
+    </ul>
+</div>
 
 ## Live Link: 
 ```
