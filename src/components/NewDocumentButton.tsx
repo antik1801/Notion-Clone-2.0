@@ -3,12 +3,19 @@ import React, { useTransition } from 'react'
 import { Button } from './ui/button'
 import { useRouter } from 'next/navigation';
 import { createNewDocument } from '../../actions/action';
+import { useUser } from '@clerk/nextjs';
 
 const NewDocumentButton = () => {
   const [ isPending, startTransition ] = useTransition();
+  const {user} = useUser()
   const router = useRouter();
   const handleCreateNewDocument = () =>{
     startTransition(async ()=>{
+      if(!user)
+      {
+        console.log("Please login first!");
+        return ;
+      }
       const result = await createNewDocument();
       if(result)
       {

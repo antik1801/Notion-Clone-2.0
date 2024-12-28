@@ -1,10 +1,10 @@
 import { User } from "./types";
 
-export {}
+export {};
 
 declare global {
-    interface CustomJwtSessionClaims extends User{
-        role: string;
-        permissions: string[];
-    }
+  interface CustomJwtSessionClaims extends User {
+    role: string;
+    permissions: string[];
+  }
 }
