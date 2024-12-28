@@ -6,7 +6,7 @@
     </div>
 </div>
 <div>
-    <h2>Please contact me if you encounter any problems<h2>
+    <p>Please contact me if you encounter any problems</p>
     <ul>
     <li class="display:flex; align-items: center;"><a href="https://www.linkedin.com/in/gaziehsanul/">linkedin.com/in/gaziehsanul/</a> </li>
     <li class="display:flex; align-items: center;">antik.edu@gmail.com</li>
