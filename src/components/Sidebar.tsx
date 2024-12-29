@@ -73,7 +73,7 @@ const Sidebar = () => {
 
   return (
     <div className="p-2 md:p-5 bg-gray-200 relative">
-      <SidebarSheet />
+      <SidebarSheet groupedData={groupedData}/>
       <div className="hidden md:inline">
         <MenuOptions groupedData={groupedData}/>
       </div>

@@ -9,10 +9,17 @@ import { MenuIcon } from "lucide-react";
 
 import React from "react";
 import MenuOptions from "./MenuOptions";
+import { TRoomDocument } from "./Sidebar";
+
+type menuOptionsProps = {
+  groupedData: {
+    owner: TRoomDocument[],
+    editor: TRoomDocument[]
+  }
+}
 
 
-
-const SidebarSheet = () => {
+const SidebarSheet = ({groupedData}: menuOptionsProps ) => {
 
   return (
     <div className="md:hidden">
@@ -25,7 +32,7 @@ const SidebarSheet = () => {
           <SheetTitle>Menu</SheetTitle>
           <div>
             {/* Options */}
-           <MenuOptions />
+           <MenuOptions groupedData={groupedData}/>
           </div>
           
         </SheetHeader>
