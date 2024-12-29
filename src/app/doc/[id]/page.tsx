@@ -1,16 +1,19 @@
-import React from 'react';
-import { Metadata } from 'next';
+import * as React from 'react'
+// import { Metadata } from 'next';
 
 // Metadata generation for dynamic route
-export const generateMetadata = async ({
-  params,
-}: {
-  params: { id: string };
-}): Promise<Metadata> => {
-  return {
-    title: `Document ${params.id}`,
-  };
-};
+// export const generateMetadata = async ({
+//   params,
+// }: {
+//   params: { id: string };
+// }): Promise<Metadata> => {
+//   // Await params here if necessary
+//   const { id } = await params;
+
+//   return {
+//     title: `Document ${id}`,
+//   };
+// };
 
 // Props interface
 interface PageProps {
@@ -20,10 +23,13 @@ interface PageProps {
 }
 
 // Page component
-const Page = ({ params }: PageProps) => {
-  const { id } = params;
+async function DocumentPage({ params }: PageProps)  {
+  const { id } = await params;
 
   return <div>Document: {id}</div>;
+
 };
 
-export default Page;
+export default DocumentPage;
+
+
