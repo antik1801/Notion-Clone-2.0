@@ -40,6 +40,11 @@ const Sidebar = () => {
   );
   
   useEffect(() => {
+      if(!user)
+        { setGroupedData({ owner: [],
+        editor: []})
+        return;
+        }
       if(loading || !snapshot) return;
       const grouped = snapshot.docs.reduce<{
         owner: TRoomDocument[];
@@ -67,8 +72,8 @@ const Sidebar = () => {
         }
       );
       setGroupedData(grouped);
-     
-  }, [snapshot, loading]);
+      
+  }, [snapshot, loading, user]);
   // TODO: MAKE a scaleton loading if loading is happening
 
   return (

@@ -1,28 +1,29 @@
-// app/doc/[id]/page.tsx
-import { Metadata } from 'next'
-import DocumentPage from '@/components/DocumentPage'
+import React from 'react';
+import { Metadata } from 'next';
 
-// Define the page params type
-type PageParams = {
+// Metadata generation for dynamic route
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> => {
+  return {
+    title: `Document ${params.id}`,
+  };
+};
+
+// Props interface
+interface PageProps {
+  params: {
     id: string;
-}
-
-// Define the page props type
-type PageProps = {
-    params: PageParams;
-    searchParams: { [key: string]: string | string[] | undefined };
-}
-
-// Metadata generation
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-    return {
-        title: `Document ${params.id}`,
-    }
+  };
 }
 
 // Page component
-export default function Page({ params }: PageProps) {
-    return (
-        <DocumentPage id={params.id} />
-    )
-}
+const Page = ({ params }: PageProps) => {
+  const { id } = params;
+
+  return <div>Document: {id}</div>;
+};
+
+export default Page;
