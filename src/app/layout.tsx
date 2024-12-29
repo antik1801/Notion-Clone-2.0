@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
+import ContexProviders from "@/providers/ContexProviders";
 
 export const metadata: Metadata = {
   title: "NOTION-CLONE-AI",
@@ -17,6 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
+    <ContexProviders>
       <html lang="en">
         <body>
             {/* Header */}
@@ -32,6 +34,7 @@ export default function RootLayout({
 
           </body>
       </html>
+      </ContexProviders>
     </ClerkProvider>
   );
 }

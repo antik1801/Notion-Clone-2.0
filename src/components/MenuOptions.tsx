@@ -1,7 +1,9 @@
+import { AuthContext } from "@/providers/ContexProviders";
 import NewDocumentButton from "./NewDocumentButton";
-import React from 'react'
+import React, { useContext } from 'react'
 
 const MenuOptions = () => {
+
   return (
     <>
     <NewDocumentButton />

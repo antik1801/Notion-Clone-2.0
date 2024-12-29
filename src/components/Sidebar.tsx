@@ -1,14 +1,15 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import SidebarSheet from "./SidebarSheet";
 import MenuOptions from "./MenuOptions";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { useUser } from "@clerk/nextjs";
-import { collectionGroup, query, where } from "firebase/firestore";
+import { collectionGroup, query, QueryDocumentSnapshot, where } from "firebase/firestore";
 import { db } from "../../firebase";
 import { DocumentData } from "firebase-admin/firestore";
+
 
 interface TRoomDocument extends DocumentData {
   createAt: string;
@@ -20,6 +21,7 @@ interface TRoomDocument extends DocumentData {
 
 const Sidebar = () => {
   const { user } = useUser();
+  
   console.log(user);
   const [groupedData, setGroupedData] = useState<{
     owner: TRoomDocument[];
@@ -29,21 +31,21 @@ const Sidebar = () => {
     editor: [],
   });
 
-  const [error, loading, data] = useCollection(
+  const [snapshot , loading , error] = useCollection(
     user &&
       query(
         collectionGroup(db, "rooms"),
         where("userId", "==", user?.emailAddresses[0]?.toString())
       )
   );
-
+  
   useEffect(() => {
-      if(loading || !data) return;
-      const grouped = data.docs.reduce<{
+      if(loading || !snapshot) return;
+      const grouped = snapshot.docs.reduce<{
         owner: TRoomDocument[];
         editor: TRoomDocument[];
       }>(
-        (acc, curr) => {
+        (acc, curr: QueryDocumentSnapshot) => {
           const roomData = curr.data() as TRoomDocument;
           if (roomData.role === "owner") {
             acc.owner.push({
@@ -65,8 +67,8 @@ const Sidebar = () => {
         }
       );
       setGroupedData(grouped);
-  
-  }, [data, loading]);
+     
+  }, [snapshot, loading]);
   // TODO: MAKE a scaleton loading if loading is happening
 
   return (
