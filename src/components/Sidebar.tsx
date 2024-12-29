@@ -11,7 +11,7 @@ import { db } from "../../firebase";
 import { DocumentData } from "firebase-admin/firestore";
 
 
-interface TRoomDocument extends DocumentData {
+export interface TRoomDocument extends DocumentData {
   createAt: string;
   role: "owner" | "editor";
   roomId: string;
@@ -75,7 +75,7 @@ const Sidebar = () => {
     <div className="p-2 md:p-5 bg-gray-200 relative">
       <SidebarSheet />
       <div className="hidden md:inline">
-        <MenuOptions />
+        <MenuOptions groupedData={groupedData}/>
       </div>
     </div>
   );
