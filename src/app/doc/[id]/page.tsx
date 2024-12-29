@@ -1,9 +1,17 @@
+'use client'
 import React from 'react'
 
-const DocumentPage = () => {
+type DocumentPageProps = {
+    params :{
+        id: string
+    }
+}
+
+const DocumentPage = ({params: {id}}: DocumentPageProps) => {
+    console.log({id});
   return (
     <div>
-      <h1>Document page</h1>
+      <h1>Document page: {id}</h1>
     </div>
   )
 }

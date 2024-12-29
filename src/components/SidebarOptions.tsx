@@ -20,7 +20,7 @@ const SidebarOptions = ({id, href}: SidebarOptionProps) => {
   return (
     <Link href={href} className={`relative flex items-center px-4 py-2 mb-2 rounded-lg shadow-sm transition-colors scrollbar-hide ${
         isActive
-          ? "bg-gray-400 font-bold text-black border border-black"
+          ? "bg-gray-300 font-bold text-black border border-black"
           : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-100"
       }`}
   >
