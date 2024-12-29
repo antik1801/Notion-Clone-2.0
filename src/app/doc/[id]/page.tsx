@@ -1,19 +1,28 @@
-'use client'
-import React from 'react'
+// app/doc/[id]/page.tsx
+import { Metadata } from 'next'
+import DocumentPage from '@/components/DocumentPage'
 
-type DocumentPageProps = {
-    params :{
-        id: string
+// Define the page params type
+type PageParams = {
+    id: string;
+}
+
+// Define the page props type
+type PageProps = {
+    params: PageParams;
+    searchParams: { [key: string]: string | string[] | undefined };
+}
+
+// Metadata generation
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    return {
+        title: `Document ${params.id}`,
     }
 }
 
-const DocumentPage = ({params: {id}}: DocumentPageProps) => {
-    console.log({id});
-  return (
-    <div>
-      <h1>Document page: {id}</h1>
-    </div>
-  )
+// Page component
+export default function Page({ params }: PageProps) {
+    return (
+        <DocumentPage id={params.id} />
+    )
 }
-
-export default DocumentPage
