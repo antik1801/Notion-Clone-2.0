@@ -15,7 +15,9 @@ const SidebarOptions = ({id, href}: SidebarOptionProps) => {
     const pathName = usePathname();
     const isActive = href && href.includes(pathName) && pathName !="/";
     if(!data) return; 
-
+    const truncateTitle = (title: string, maxLength: number) => {
+      return title.length >maxLength ? title.substring(0,maxLength) + "..." : title;
+    };
 
   return (
     <Link href={href} className={`relative flex items-center px-4 py-2 mb-2 rounded-lg shadow-sm transition-colors scrollbar-hide ${
@@ -24,7 +26,7 @@ const SidebarOptions = ({id, href}: SidebarOptionProps) => {
           : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-100"
       }`}
   >
-    <p className='truncate w-full'>{data.title}</p>
+    <p className='truncate w-full'>{truncateTitle(data.title, 20)}</p>
   </Link>
   )
 }
