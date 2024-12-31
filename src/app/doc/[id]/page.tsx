@@ -1,5 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react'
+import Document from '../../../components/Document';
 
 type TProps = {id: string}
 
@@ -9,15 +10,15 @@ const DocumentPage =( props: { params: Promise<TProps> })=>{
     useEffect(() => {
         // Unwrap the promise and update state
         props.params.then((resolvedParams) => {
-            setParams(resolvedParams);
+          setParams(resolvedParams);
         });
     }, [props.params]);
     if (!params) {
       return <div>Loading...</div>; // Render a fallback while params are being resolved
-  }
+    }
   return (
-    <div>
-        <h1>This is a document page</h1>
+    <div className="flex flex-col flex-1 min-h-screen">
+        <Document id={params.id} />
     </div>
   )
 }
