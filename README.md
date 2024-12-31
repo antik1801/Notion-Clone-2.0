@@ -33,4 +33,5 @@ https://github.com/antik1801/Notion-Clone-2.0
     <li>Firestore Database</li>
     <li>Firestore Admin</li>
     <li>Context API</li>
+    <li><a href="https://liveblocks.io/">BlockNotes</a></li>
 </ul>

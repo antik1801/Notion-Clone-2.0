@@ -6,6 +6,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import Container from "./ui/Container";
+import useOwner from "@/lib/useOwner";
 
 type TDocumentProps = {
   id: string;
@@ -16,7 +17,7 @@ const Document = ({ id }: TDocumentProps) => {
   const [isUpdating, startTransition] = useTransition();
   const firebaseConnection = doc(db, "documents", id);
   const [data, loading, error] = useDocumentData(firebaseConnection);
-
+  const owner = useOwner();
   useEffect(() => {
     if (data) {
       startTransition(async () => {
