@@ -42,7 +42,7 @@ const Document = ({ id }: TDocumentProps) => {
           {/* rename the docs */}
           <Input value={input} onChange={(e) => setInput(e.target.value)} />
 
-          <Button disabled={isUpdating} type="submit">
+          <Button disabled={isUpdating || !input} type="submit">
             {isUpdating ? "Updating..." : "Update"}
           </Button>
           {/* IF */}

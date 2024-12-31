@@ -2,6 +2,7 @@
 
 import { SignedIn, SignedOut, SignInButton, UserButton  } from "@clerk/nextjs"
 import Link from "next/link"
+import Breadcrumbs from "./Breadcrumbs"
 
 const Header = () => {
     
@@ -12,6 +13,7 @@ const Header = () => {
         Sonny-Notion-AI
      </Link>
         {/* Breadcrums */}
+        <Breadcrumbs />
       {/* authentications */}
       <div>
         <SignedOut>
