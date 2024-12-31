@@ -1,35 +1,25 @@
-import * as React from 'react'
-// import { Metadata } from 'next';
+"use client"
+import React, { useEffect, useState } from 'react'
 
-// Metadata generation for dynamic route
-// export const generateMetadata = async ({
-//   params,
-// }: {
-//   params: { id: string };
-// }): Promise<Metadata> => {
-//   // Await params here if necessary
-//   const { id } = await params;
+type TProps = {id: string}
 
-//   return {
-//     title: `Document ${id}`,
-//   };
-// };
+const DocumentPage =( props: { params: Promise<TProps> })=>{
+  const [params, setParams] = useState<TProps | null>(null);
 
-// Props interface
-interface PageProps {
-  params: {
-    id: string;
-  };
+    useEffect(() => {
+        // Unwrap the promise and update state
+        props.params.then((resolvedParams) => {
+            setParams(resolvedParams);
+        });
+    }, [props.params]);
+    if (!params) {
+      return <div>Loading...</div>; // Render a fallback while params are being resolved
+  }
+  return (
+    <div>
+        <h1>This is a document page</h1>
+    </div>
+  )
 }
 
-// Page component
-async function DocumentPage({ params }: PageProps)  {
-  const { id } = await params;
-
-  return <div>Document: {id}</div>;
-
-};
-
-export default DocumentPage;
-
-
+export default DocumentPage
