@@ -1,12 +1,13 @@
 'use client'
 import {ReactNode} from "react"
+import LiveblocksProviders from "@/components/LiveblocksProviders"
 function PageLayout({children}: {
     children: ReactNode
 }){
     return(
-        <div>
+        <LiveblocksProviders>
             {children}
-        </div>
+        </LiveblocksProviders>
     )
 }
 export default PageLayout;
