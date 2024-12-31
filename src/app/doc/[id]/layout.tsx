@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { auth } from "@clerk/nextjs/server";
+import RoomProvider from '@/components/RoomProvider';
 
 type TDocLayoutProps = {
     children: ReactNode;
@@ -11,9 +12,9 @@ async function DocLayout({children, params}: TDocLayoutProps){
     const {id} = await params;
     console.log({id}, "From /doc/[id]/layout.tsx");
     return(
-        <div>
+        <RoomProvider roomId={id}>
             {children}
-        </div>
+        </RoomProvider>
     )
 }
 
