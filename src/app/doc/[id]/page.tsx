@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import Document from '../../../components/Document';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 type TProps = {id: string}
 
@@ -14,7 +15,7 @@ const DocumentPage =( props: { params: Promise<TProps> })=>{
         });
     }, [props.params]);
     if (!params) {
-      return <div>Loading...</div>; // Render a fallback while params are being resolved
+      return <LoadingSpinner /> ; // Render a fallback while params are being resolved
     }
   return (
     <div className="flex flex-col flex-1 min-h-screen">
